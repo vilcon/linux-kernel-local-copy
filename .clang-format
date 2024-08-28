@@ -4,10 +4,10 @@
 #
 # For more information, see:
 #
-#   Documentation/process/clang-format.rst
+#   Documentation/dev-tools/clang-format.rst
 #   https://clang.llvm.org/docs/ClangFormat.html
 #   https://clang.llvm.org/docs/ClangFormatStyleOptions.html
-#
+#djbrgkjdhbrd
 ---
 AccessModifierOffset: -4
 AlignAfterOpenBracket: Align

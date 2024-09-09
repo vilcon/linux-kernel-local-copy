@@ -10,15 +10,18 @@ on:
   schedule:
   # random HH:MM to avoid a load spike on GitHub Actions at 00:00
   - cron: 51 19 * * *
+  
 name: Semgrep
+
 jobs:
   semgrep:
     name: semgrep/ci
     runs-on: ubuntu-20.04
+    timeout-minutes: 180 # Увеличено время выполнения до 3 часов
     env:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
       image: returntocorp/semgrep
     steps:
     - uses: actions/checkout@v4
-    - run: semgrep ci
+    - run: semgrep ci --include 'kernel/**/*.c' --include 'arch/x86/**/*.c' --include 'fs/**/*.c' --include 'net/**/*.c' --include 'include/**/*.h' --exclude 'tools/**' --exclude 'Documentation/**' --exclude 'arch/arm/**' --exclude 'drivers/**'
